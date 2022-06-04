@@ -1,0 +1,187 @@
+<%- include('includes/head.ejs') %>
+
+<section class="relative mb-6 h-[44rem] overflow-hidden">
+    <button type="button" id="btn-left-hero" class="items-center text-center text-9xl absolute  left-0 top-[15.75rem] w-14 text-black hover:text-slate-600 z-10">&#8249;</button>
+    <div class="relative">
+        <div id="hero1-box" class="absolute transition-[opacity] duration-1000 delay-150">
+            <img src="images/h1_hero1.jpg" alt="h1_hero1" class="w-[134rem]">
+            <div class="absolute top-52 left-60 font-serif text-center w-[35rem]">
+                <h2 class="text-4xl italic text-red-400">Fashion Sale</h2>
+                <h3 class="text-5xl translate-x-6 transition-all">Minimal Menz Style</h3>
+                <p class="text-gray-900">
+                    Consectetur adipisicing elit. Laborum fuga incidunt laboriosam voluptas iure, delectus dignissimos facilis neque nulla earum.
+                </p>
+                <div class="mt-4 text-lg">
+                    <a href="/men" class="px-7 py-2 font-sans border-solid border-2 border-black bg-black text-white hover:text-black hover:bg-white">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        <div id="hero2-box" class="absolute opacity-0 transition-[opacity] duration-1000 delay-150">
+            <img src="images/h1_hero2.jpg" alt="h1_hero2"  class="w-[134rem]">
+            <div class="absolute top-52 right-60 font-serif text-center w-[35rem]">
+                <h2 class="text-4xl italic text-red-400">Fashion Sale</h2>
+                <h3 class="text-5xl">Minimal Menz Style</h3>
+                <p class="text-gray-900">
+                    Consectetur adipisicing elit. Laborum fuga incidunt laboriosam voluptas iure, delectus dignissimos facilis neque nulla earum.
+                </p>
+                <div class="mt-4 text-lg">
+                    <a href="/men" class="px-7 py-2 font-sans border-solid border-2 border-black bg-black text-white hover:text-black hover:bg-white">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" id="btn-rigth-hero" class="items-center text-center text-9xl absolute  right-0 top-[15.75rem] w-14 text-black hover:text-slate-600 z-10">&#8250;</button>
+</section>
+
+<section class="flex justify-center my-6">
+    <div class="flex justify-between w-[85rem]">
+        <div class="shadow-2xl relative before:content-['Men\'s_Fashion'] transition-all duration-700 hover:scale-90 before:transition-all before:duration-700 before:absolute before:bottom-0 before:font-bold before:text-white before:text-2xl before:bg-[#0000007e] before:w-[26.5rem] before:text-center hover:before:bottom-44"> 
+            <img src="images/item1.jpg" alt="item1">
+        </div>
+        <div class="shadow-2xl relative before:content-['Women\'s_Fashion'] transition-all duration-700 hover:scale-90 before:transition-all before:duration-700 before:absolute before:bottom-0 before:font-bold before:text-white before:text-2xl before:bg-[#0000007e] before:w-[26.5rem] before:text-center hover:before:bottom-44"> 
+            <img src="images/item2.jpg" alt="item2">
+        </div>
+        <div class="shadow-2xl relative before:content-['baby\'s_Fashion'] transition-all duration-700 hover:scale-90 before:transition-all before:duration-700 before:absolute before:bottom-0 before:font-bold before:text-white before:text-2xl before:bg-[#0000007e] before:w-[26.5rem] before:text-center hover:before:bottom-44"> 
+            <img src="images/item3.jpg" alt="item3">
+        </div>
+    </div>
+</section>
+
+<section class="text-center my-6">
+    <div class="text-6xl mt-10">
+        <h5>Trending This Week</h5>
+    </div>
+    <div class="flex justify-center items-center gap-[100rem] h-96 mt-10 relative ">
+        <button type="button" id="btn-left-trending" class="text-7xl">&#8249;</button>
+        <div id="trending-box-1" class="flex absolute drop-shadow-2xl z-[1]">
+            <% trandingWeekBox1.forEach( imagePath =>{ %>
+            <div class="flex justify-center mx-8 transition-all duration-1000 ease-in-out relative hover:scale-90">
+                <a href="#">
+                    <img src="<%= imagePath %>" alt="<%= imagePath %>">
+                </a>
+                <div class="absolute bottom-9 transition-all duration-1000 opacity-0">
+                    <div class="flex bg-white ">
+                        <div class="px-4 py-2 transition-all duration-1000  hover:bg-red-500">
+                            <a href="#">
+                                <img src="icons/shopping-cart.svg" alt="shopping-cart">
+                            </a>
+                        </div>
+                        <div class="px-4 py-2 transition-all duration-1000 hover:bg-red-500">
+                            <a href="#">
+                                <img src="icons/heart.svg" alt="heart">
+                            </a>
+                        </div>
+                        <div class="px-4 py-2 transition-all duration-1000 hover:bg-red-500">
+                            <a href="#">
+                                <img src="icons/zoom-in.svg" alt="zoom-in">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <div id="trending-box-2" class="flex absolute drop-shadow-2xl z-[0]">
+            <% trandingWeekBox2.forEach( imagePath =>{ %>
+            <div class="flex justify-center mx-8 transition-all duration-1000 ease-linear opacity-0 rotate-[180deg] hover:scale-90">
+                <a href="#">
+                    <img src="<%= imagePath %>" alt="<%= imagePath %>">
+                </a>
+                <div class="absolute bottom-9 transition-all duration-1000 opacity-0">
+                    <div class="flex bg-white">
+                        <div class="px-4 py-2 transition-all duration-1000 hover:bg-red-500">
+                            <a href="#">
+                                <img src="icons/shopping-cart.svg" alt="shopping-cart">
+                            </a>
+                        </div>
+                        <div class="px-4 py-2 transition-all duration-1000 hover:bg-red-500">
+                            <a href="#">
+                                <img src="icons/heart.svg" alt="heart">
+                            </a>
+                        </div>
+                        <div class="px-4 py-2 transition-all duration-1000 hover:bg-red-500">
+                            <a href="#">
+                                <img src="icons/zoom-in.svg" alt="zoom-in">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <button type="button" id="btn-rigth-trending"  class="text-7xl">&#8250;</button>
+    </div>
+</section>
+
+<section class="bg-orange-300 relative py-40">
+    <div class="flex justify-center text-center items-center container m-auto gap-[55rem]">
+        <button type="button" id="btn-left-customer-message" class="text-7xl font-light text-[#00000087] hover:text-black">&#8249;</button>
+        <div class="flex absolute w-[40rem] overflow-hidden">
+            <% for (let i = 0; i < 3; i++) { %>
+            <div class="message-box">
+                <h1 class="text-4xl mb-12">Customer Testimonial</h1>
+                <p class="w-[36rem] text-center text-xl">Everybody is different, which is why we offer styles for every body. Laborum fuga incidunt laboriosam voluptas iure, delectus dignissimos facilis neque nulla earum.</p>
+                <div class="flex items-center mt-6">
+                    <img src="images/founder-img.png" alt="founder-img.png" class="mr-8">
+                    <div class="text-left">
+                        <span class="font-sans">Petey Cruiser</span>
+                        <p class="text-gray-500 font-sans">Designer at Colorlib</p>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <button type="button" id="btn-rigth-customer-message" class="text-7xl font-light text-[#00000087] hover:text-black">&#8250;</button>
+    </div>
+</section>
+
+<section class="bg-gray-100 p-8">
+    <div class="text-center text-6xl font-serif">
+        <h1>Latest News</h1>
+    </div>
+    <div class="flex justify-center gap-12 mt-8">
+        <% latestNews.forEach( imagePath => { %>
+        <div>
+            <img src="<%= imagePath %>" alt="<%= imagePath %>" class="drop-shadow-xl cursor-pointer">
+            <div class="mt-4 w-[26.5rem]">
+                <span class="text-gray-500 font-serif">Fashion Tips</span>
+                <h3 class="text-2xl mt-2 hover:text-amber-700">What Curling Irons Are The Best Ones</h3>
+                <p class="text-gray-500 mt-4">Consectetur adipisicing elit. Laborum fuga incidunt laboriosam voluptas iure, delectus..</p>
+                <a href="#" class="font-serif mt-3 inline-block text-lg underline font-bold transition-all duration-500 hover:scale-125">Read More</a>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</section>
+
+
+<section class="p-8 divide-x-2 my-8">
+    <div class="flex justify-center gap-40">
+        <div class="flex flex-col items-center text-center leading-8">
+            <img src="icons/fast & free delivery.svg" alt="fast & free delivery.svg" class="w-20 m-4">
+            <h5 class="font-bold text-lg">Fast & Free Delivery</h5>
+            <p class="text-gray-500">Free delivery on all orders</p>
+        </div>
+        <div class="flex flex-col items-center text-center leading-8">
+            <img src="icons/secure-payment.svg" alt="secure-payment.svg" class="w-20 m-4">
+            <h5 class="font-bold text-lg">Secure Payment</h5>
+            <p class="text-gray-500">Free delivery on all orders</p>
+        </div>
+        <div class="flex flex-col items-center text-center leading-8">
+            <img src="icons/Money Back Guarantee.svg" alt="Money Back Guarantee" class="w-20 m-4">
+            <h5 class="font-bold text-lg">Money Back Guarantee</h5>
+            <p class="text-gray-500">Free delivery on all orders</p>
+        </div>
+        <div class="flex flex-col items-center text-center leading-8">
+            <img src="icons/24 hours.svg" alt="24 hours.svg" class="w-20 m-4">
+            <h5 class="font-bold text-lg">Money Back Guarantee</h5>
+            <p class="text-gray-500">Free delivery on all orders</p>
+        </div>
+    </div>
+</section>
+
+<%- include('includes/footer.ejs') %>
+
+<script src="js/home.js"></script>
+
+<%- include('includes/end.ejs') %>
