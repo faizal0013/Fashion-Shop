@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>
+
+<section class="font-serif my-5">
+    <div class="w-[110rem] mx-auto mt-10">
+        <% if(!productDetails.length) { %>
+        <div class="flex justify-center items-center h-[32rem]">
+            <p class="font-bold text-6xl">Cart is empty</p>
+        </div>
+        <% } else { %> 
+        <div class="flex gap-[30rem]">
+            <div class="text-gray-600 text-xl">Product</div>
+            <div class="text-gray-600 text-xl">Price</div>
+            <div class="text-gray-600 text-xl">Quantity</div>
+            <div class="text-gray-600 text-xl">Total</div>
+        </div>
+        <div class="h-[26rem] overflow-scroll">
+            <% productDetails.forEach(productDetails => { %>
+            <div class="grid grid-cols-4 gap-[25rem] mt-10">
+                <div class="text-xl"><%= productDetails.shitName%></div>
+                <div class="text-xl"><%= productDetails.price %></div>
+                <div class="text-xl">1</div>
+                <div class="text-xl">₹<%= productDetails.price %></div>
+            </div>
+            <%}) %>
+        </div>
+        <div class="border-b-2 border-gray-700 mt-8"></div>
+        <div class="flex justify-center text-xl my-5">
+            <div class="flex items-center gap-x-96">
+                <form action="#" id="purchas">
+                    <button type="submit" class="border-2 rounded-xl text-yellow-50 font-bold bg-gray-500 px-6 py-2 hover:bg-gray-400">Purchas</button>
+                </form>
+                <p class="font-bold">Totle: <%= totalPrice(); %></p>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</section>
+
+<%- include('includes/footer.ejs') %>
+
+<script src="/js/car-details.js"></script>
+
+<%- include('includes/end.ejs') %>

@@ -3,7 +3,7 @@
 const searchInput = document.querySelector('#search-input');
 const searchIcon = document.querySelector('#search-icon');
 
-searchInput.addEventListener('submit', (e) => {
+searchInput.addEventListener('submit', e => {
   e.preventDefault();
 });
 
