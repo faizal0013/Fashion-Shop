@@ -80,15 +80,18 @@
                 <img src="<%= item.img %>" alt="<%= item.imgAlt %>" class="w-96 h-96 m-2 object-contain">
             </div>
             <div class="font-mono">
-                <div class="font-light">
-                    <span><%= item.shitName %></span>
+                <div class="font-light my-2">
+                    <span><%= item.clothesName %></span>
                 </div>
                 <div class="text-orange-700 font-bold">
                     <span>₹<%= item.price %></span>
                 </div>
             </div>
-            <div>
-                <a href="/men-clothes/<%= item._id %>" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300">Add to Card</a>
+            <div class="flex justify-center">
+                <a href="/<%= url %>/<%= item._id %>" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300">view</a>
+                <form class="add-cart" accept="/add-cart">
+                    <button type="submit" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300">Add Cart</button>
+                </form>
             </div>
         </div>
         <%}); %>
@@ -96,5 +99,16 @@
 </div>
 
 <%- include('includes/footer.ejs') %>
+
+<script>
+    const addCart = document.querySelectorAll('.add-cart');
+    addCart.forEach(el => {
+        el.addEventListener('click', e => {
+            console.log('click');
+            e.preventDefault();
+        })
+    })
+</script>
+
 
 <%- include('includes/end.ejs') %>

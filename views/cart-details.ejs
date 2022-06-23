@@ -16,7 +16,7 @@
         <div class="h-[26rem] overflow-scroll">
             <% productDetails.forEach(productDetails => { %>
             <div class="grid grid-cols-4 gap-[25rem] mt-10">
-                <div class="text-xl"><%= productDetails.shitName%></div>
+                <div class="text-xl"><%= productDetails.clothesName%></div>
                 <div class="text-xl"><%= productDetails.price %></div>
                 <div class="text-xl">1</div>
                 <div class="text-xl">₹<%= productDetails.price %></div>
@@ -29,7 +29,7 @@
                 <form action="#" id="purchas">
                     <button type="submit" class="border-2 rounded-xl text-yellow-50 font-bold bg-gray-500 px-6 py-2 hover:bg-gray-400">Purchas</button>
                 </form>
-                <p class="font-bold">Totle: <%= totalPrice(); %></p>
+                <p class="font-bold text-red-600">Totle: <%= totalPrice(); %></p>
             </div>
         </div>
         <% } %>
