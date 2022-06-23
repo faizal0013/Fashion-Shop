@@ -1,5 +1,6 @@
-const MANCLOTESITEM = require('../data/MANCLOTESITEM');
-const cart = require('../data/cart');
+const Product = require('../modules/Product');
+
+const product = new Product();
 
 exports.getHome = (req, res) => {
   res.render('index', {
@@ -37,15 +38,70 @@ exports.getShopDetails = (req, res) => {
 };
 
 exports.getManClothes = (req, res) => {
-  res.render('men-clothes', {
-    pageTitle: 'Men Clothes',
-    item: MANCLOTESITEM,
+  product.getMenClotes(data => {
+    res.render('view-clothes', {
+      pageTitle: 'Men Clothes',
+      item: data,
+      url: 'men-clothes',
+    });
   });
 };
 
+// dynamic router controlls
 exports.getManClothesProductId = (req, res) => {
-  const productId = Number(req.params.productId);
-  const product = MANCLOTESITEM.find(product => product._id === productId);
-  cart.push(product);
-  res.redirect('/men-clothes');
+  const productId = req.params.productId;
+  product.getMenClotesById(productId, data => {
+    res.render('view-clothe', {
+      pageTitle: data.clothesName,
+      item: data,
+    });
+  });
+};
+
+exports.getWometClothes = (req, res) => {
+  product.getWomenClotes(data => {
+    res.render('view-clothes', {
+      pageTitle: 'Women Clothes',
+      item: data,
+      url: 'women-clothes',
+    });
+  });
+};
+
+// dynamic router controlls
+exports.getWometClothesProductId = (req, res) => {
+  const productId = req.params.productId;
+  product.getBabyClotesById(productId, data => {
+    res.render('view-clothe', {
+      pageTitle: data.clothesName,
+      item: data,
+    });
+  });
+};
+
+exports.getBabyClothes = (req, res) => {
+  product.getBabyClotes(data => {
+    res.render('view-clothes', {
+      pageTitle: 'Baby Clothes',
+      item: data,
+      url: 'baby-clothes',
+    });
+  });
+};
+
+// dynamic router controlls
+exports.getBabyClothesProductId = (req, res) => {
+  const productId = req.params.productId;
+  product.getBabyClotesById(productId, data => {
+    res.render('view-clothe', {
+      pageTitle: data.clothesName,
+      item: data,
+    });
+  });
+};
+
+exports.getContactUs = (req, res) => {
+  res.render('contact-us', {
+    pageTitle: 'Contact us',
+  });
 };

@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "1",
+    "img": "/images/men-clothes/Clothes-1.jpg",
+    "imgAlt": "Clothes-1",
+    "clothesName": "T-Shirt-1",
+    "price": "990"
+  },
+  {
+    "_id": "2",
+    "img": "/images/men-clothes/Clothes-2.jpg",
+    "imgAlt": "Clothes-2",
+    "clothesName": "T-Shirt-2",
+    "price": "1000"
+  },
+  {
+    "_id": "3",
+    "img": "/images/men-clothes/Clothes-3.jpg",
+    "imgAlt": "Clothes-3",
+    "clothesName": "T-Shirt-3",
+    "price": "790"
+  },
+  {
+    "_id": "4",
+    "img": "/images/men-clothes/Clothes-4.jpg",
+    "imgAlt": "Clothes-4",
+    "clothesName": "T-Shirt-4",
+    "price": "890"
+  },
+  {
+    "_id": "5",
+    "img": "/images/men-clothes/Clothes-5.jpg",
+    "imgAlt": "Clothes-5",
+    "clothesName": "T-Shirt-5",
+    "price": "1100"
+  },
+  {
+    "_id": "6",
+    "img": "/images/men-clothes/Clothes-6.jpg",
+    "imgAlt": "Clothes-6",
+    "clothesName": "T-Shirt-6",
+    "price": "980"
+  }
+]
