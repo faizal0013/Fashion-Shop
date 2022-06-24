@@ -1,30 +1,28 @@
 const express = require('express');
 
+const routers = express.Router();
+
 const controllers = require('../controllers/controllers');
 
-const routes = express.Router();
+routers.get('/', controllers.getHome);
 
-routes.get('/', controllers.getHome);
+routers.get('/home', controllers.getHome);
 
-routes.get('/home', controllers.getHome);
-
-routes.get('/cart-details', controllers.getShopDetails);
-
-routes.get('/men-clothes', controllers.getManClothes);
+routers.get('/men-clothes', controllers.getManClothes);
 
 // dynamic router
-routes.get('/men-clothes/:productId', controllers.getManClothesProductId);
+routers.get('/men-clothes/:productId', controllers.getManClothesProductId);
 
-routes.get('/women-clothes', controllers.getWometClothes);
-
-// dynamic router
-routes.get('/women-clothes/:productId', controllers.getWometClothesProductId);
-
-routes.get('/baby-clothes', controllers.getBabyClothes);
+routers.get('/women-clothes', controllers.getWometClothes);
 
 // dynamic router
-routes.get('/baby-clothes/:productId', controllers.getBabyClothesProductId);
+routers.get('/women-clothes/:productId', controllers.getWometClothesProductId);
 
-routes.get('/contact-us', controllers.getContactUs);
+routers.get('/baby-clothes', controllers.getBabyClothes);
 
-module.exports = routes;
+// dynamic router
+routers.get('/baby-clothes/:productId', controllers.getBabyClothesProductId);
+
+routers.get('/contact-us', controllers.getContactUs);
+
+module.exports = routers;

@@ -1,27 +1,27 @@
 <%- include('includes/head.ejs') %>
 
 <section class="flex justify-center my-10">
-    <div class="p-8 border-2">
-        <div class="border-2">
-            <div>
-                <img src="<%= item.img %>" alt="<%= item.imgAlt %>" class="h-96">
-            </div>
-            <div class="font-mono text-center">
-                <div class="font-light my-2">
-                    <span><%= item.clothesName %></span>
-                </div>
-                <div class="text-orange-700 font-bold">
-                    <span>₹<%= item.price %></span>
-                </div>
-            </div>
+  <div class="p-8 border-2">
+    <div class="border-2">
+      <div>
+        <img src="<%= item.img %>" alt="<%= item.imgAlt %>" class="h-96" />
+      </div>
+      <div class="font-mono text-center">
+        <div class="font-light my-2">
+          <span><%= item.clothesName %></span>
         </div>
-        <div class="flex justify-center">
-            <a href="" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300">Back</a>
-            <a href="" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300">Add Card</a>
+        <div class="text-orange-700 font-bold">
+          <span>₹<%= item.price %></span>
         </div>
+      </div>
     </div>
+    <div class="flex justify-center">
+      <a href="" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300">Back</a>
+      <a href="/<%= addToCard %>/<%= item._id %>" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300"
+        >Add Card</a
+      >
+    </div>
+  </div>
 </section>
 
-<%- include('includes/footer.ejs') %>
-
-<%- include('includes/end.ejs') %>
+<%- include('includes/footer.ejs') %> <%- include('includes/end.ejs') %>

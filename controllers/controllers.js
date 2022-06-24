@@ -43,6 +43,7 @@ exports.getManClothes = (req, res) => {
       pageTitle: 'Men Clothes',
       item: data,
       url: 'men-clothes',
+      addToCard: 'add-cart/men-clothe',
     });
   });
 };
@@ -54,6 +55,8 @@ exports.getManClothesProductId = (req, res) => {
     res.render('view-clothe', {
       pageTitle: data.clothesName,
       item: data,
+      url: 'men-clothes',
+      addToCard: 'add-cart/men-clothe',
     });
   });
 };
@@ -64,6 +67,7 @@ exports.getWometClothes = (req, res) => {
       pageTitle: 'Women Clothes',
       item: data,
       url: 'women-clothes',
+      addToCard: 'add-cart/women-clothe',
     });
   });
 };
@@ -71,10 +75,11 @@ exports.getWometClothes = (req, res) => {
 // dynamic router controlls
 exports.getWometClothesProductId = (req, res) => {
   const productId = req.params.productId;
-  product.getBabyClotesById(productId, data => {
+  product.getWomenClotesById(productId, data => {
     res.render('view-clothe', {
       pageTitle: data.clothesName,
       item: data,
+      addToCard: 'add-cart/women-clothe',
     });
   });
 };
@@ -85,6 +90,7 @@ exports.getBabyClothes = (req, res) => {
       pageTitle: 'Baby Clothes',
       item: data,
       url: 'baby-clothes',
+      addToCard: 'add-cart/baby-clothe',
     });
   });
 };
@@ -96,6 +102,7 @@ exports.getBabyClothesProductId = (req, res) => {
     res.render('view-clothe', {
       pageTitle: data.clothesName,
       item: data,
+      addToCard: 'add-cart/baby-clothe',
     });
   });
 };
