@@ -1,39 +1,75 @@
 const Cart = require('../modules/Cart');
-const Product = require('../modules/Product');
-
-const cart = new Cart();
-
-const product = new Product();
+const product = require('../modules/Product');
 
 exports.getShopDetails = (req, res) => {
-  cart.getCartDetails(item => {
-    cart.getTotal(total => {
-      res.render('cart-details', {
-        pageTitle: 'Cart Details',
-        productDetails: item,
-        total,
-      });
+  Cart.find().then(item => {
+    let total = 0;
+
+    item.forEach(items => {
+      total += items.price;
+    });
+
+    res.render('cart-details', {
+      pageTitle: 'Cart Details',
+      productDetails: item,
+      total,
     });
   });
 };
 
 exports.addToCartMenClotheById = (req, res) => {
   const { productId } = req.params;
-  console.log('cart productId', productId);
-  product.getMenClotesById(productId, data => {
-    cart.addToCart(data);
-  });
-  res.redirect('/men-clothes');
+
+  product
+    .findById(productId)
+    .then(data => {
+      const cart = new Cart({
+        Product_id: data._id,
+        img: data.img,
+        imgAlt: data.imgAlt,
+        clothesName: data.clothesName,
+        price: data.price,
+      });
+      cart.save();
+      res.redirect('/men-clothes');
+    })
+    .catch(err => console.log('addToCartMenClotheById', err));
 };
 
 exports.addToCartwomenClotheById = (req, res) => {
   const { productId } = req.params;
-  console.log('cart productId', productId);
-  res.redirect('/women-clothes');
+
+  product
+    .findById(productId)
+    .then(data => {
+      const cart = new Cart({
+        Product_id: data._id,
+        img: data.img,
+        imgAlt: data.imgAlt,
+        clothesName: data.clothesName,
+        price: data.price,
+      });
+      cart.save();
+      res.redirect('/women-clothes');
+    })
+    .catch(err => console.log('addToCartwomenClotheById', err));
 };
 
 exports.addToCartBabyClotheById = (req, res) => {
   const { productId } = req.params;
-  console.log('cart productId', productId);
-  res.redirect('/baby-clothes');
+
+  product
+    .findById(productId)
+    .then(data => {
+      const cart = new Cart({
+        Product_id: data._id,
+        img: data.img,
+        imgAlt: data.imgAlt,
+        clothesName: data.clothesName,
+        price: data.price,
+      });
+      cart.save();
+      res.redirect('/baby-clothes');
+    })
+    .catch(err => console.log('addToCartBabyClotheById', err));
 };

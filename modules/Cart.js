@@ -1,28 +1,26 @@
-const fs = require('fs');
-const path = require('path');
+const { Schema, model } = require('mongoose');
 
-const readCartDetailsFile = async cd => {
-  await fs.readFile(path.join(__dirname, '../', 'data', 'cart-details.json'), (err, data) => {
-    cd(JSON.parse(data));
-  });
-};
+const CartSchema = new Schema({
+  Product_id: {
+    type: Schema.Types.ObjectId,
+    require: true,
+  },
+  img: {
+    type: Schema.Types.String,
+    require: true,
+  },
+  imgAlt: {
+    type: Schema.Types.String,
+    require: true,
+  },
+  clothesName: {
+    type: Schema.Types.String,
+    require: true,
+  },
+  price: {
+    type: Schema.Types.Number,
+    require: true,
+  },
+});
 
-module.exports = class Cart {
-  constructor() {}
-
-  addToCart(data) {}
-
-  getCartDetails(cd) {
-    readCartDetailsFile(cd);
-  }
-
-  getTotal(cd) {
-    readCartDetailsFile(item => {
-      let total = 0;
-      item.forEach(data => {
-        total += Number(data.price);
-      });
-      cd(total);
-    });
-  }
-};
+module.exports = model('Cart', CartSchema);

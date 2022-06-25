@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
 
 const ProductSchema = new Schema({
   tag: {
@@ -25,4 +23,4 @@ const ProductSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = model('Product', ProductSchema);
