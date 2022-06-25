@@ -1,6 +1,4 @@
-const Product = require('../modules/Product');
-
-const product = new Product();
+const products = require('../modules/Product');
 
 exports.getHome = (req, res) => {
   res.render('index', {
@@ -37,72 +35,90 @@ exports.getShopDetails = (req, res) => {
   });
 };
 
-exports.getManClothes = (req, res) => {
-  product.getMenClotes(data => {
-    res.render('view-clothes', {
-      pageTitle: 'Men Clothes',
-      item: data,
-      url: 'men-clothes',
-      addToCard: 'add-cart/men-clothe',
+exports.getManClothes = async (req, res) => {
+  await products
+    .find({ tag: 'men-clothe' })
+    .then(data => {
+      res.render('view-clothes', {
+        pageTitle: 'Men Clothes',
+        item: data,
+        url: 'men-clothes',
+        addToCard: 'add-cart/men-clothe',
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  });
 };
 
 // dynamic router controlls
 exports.getManClothesProductId = (req, res) => {
   const productId = req.params.productId;
-  product.getMenClotesById(productId, data => {
+  products.findById(productId).then(data => {
     res.render('view-clothe', {
       pageTitle: data.clothesName,
       item: data,
       url: 'men-clothes',
       addToCard: 'add-cart/men-clothe',
+      backPage: '/men-clothes',
     });
   });
 };
 
-exports.getWometClothes = (req, res) => {
-  product.getWomenClotes(data => {
-    res.render('view-clothes', {
-      pageTitle: 'Women Clothes',
-      item: data,
-      url: 'women-clothes',
-      addToCard: 'add-cart/women-clothe',
+exports.getWometClothes = async (req, res) => {
+  await products
+    .find({ tag: 'women-clothe' })
+    .then(data => {
+      res.render('view-clothes', {
+        pageTitle: 'Women Clothes',
+        item: data,
+        url: 'women-clothes',
+        addToCard: 'add-cart/women-clothe',
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  });
 };
 
 // dynamic router controlls
 exports.getWometClothesProductId = (req, res) => {
   const productId = req.params.productId;
-  product.getWomenClotesById(productId, data => {
+  products.findById(productId).then(data => {
     res.render('view-clothe', {
       pageTitle: data.clothesName,
       item: data,
       addToCard: 'add-cart/women-clothe',
+      backPage: '/women-clothes',
     });
   });
 };
 
-exports.getBabyClothes = (req, res) => {
-  product.getBabyClotes(data => {
-    res.render('view-clothes', {
-      pageTitle: 'Baby Clothes',
-      item: data,
-      url: 'baby-clothes',
-      addToCard: 'add-cart/baby-clothe',
+exports.getBabyClothes = async (req, res) => {
+  await products
+    .find({ tag: 'baby-clothe' })
+    .then(data => {
+      res.render('view-clothes', {
+        pageTitle: 'Baby Clothes',
+        item: data,
+        url: 'baby-clothes',
+        addToCard: 'add-cart/baby-clothe',
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  });
 };
 
 // dynamic router controlls
 exports.getBabyClothesProductId = (req, res) => {
   const productId = req.params.productId;
-  product.getBabyClotesById(productId, data => {
+  products.findById(productId).then(data => {
     res.render('view-clothe', {
       pageTitle: data.clothesName,
       item: data,
       addToCard: 'add-cart/baby-clothe',
+      backPage: '/baby-clothes',
     });
   });
 };
