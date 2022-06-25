@@ -1,20 +1,17 @@
-// 'use strict';
+'use strict';
 
-// // Initialize and add the map
-// function initMap() {
-//   // The location of Uluru
-//   const uluru = { lat: -25.344, lng: 131.031 };
-//   // The map, centered at Uluru
-//   const map = new google.maps.Map(document.getElementById('map'), {
-//     zoom: 4,
-//     center: uluru,
-//   });
+const map = L.map('map').setView([51.505, -0.09], 13);
 
-//   // The marker, positioned at Uluru
-//   const marker = new google.maps.Marker({
-//     position: uluru,
-//     map: map,
-//   });
-// }
+const marker = L.marker([51.5, -0.09]).addTo(map);
 
-// window.initMap = initMap;
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+}).addTo(map);
+
+const polygon = L.polygon([
+  [51.509, -0.08],
+  [51.503, -0.06],
+  [51.51, -0.047],
+]).addTo(map);
+
+marker.bindPopup('I am a here.').openPopup();
