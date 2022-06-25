@@ -17,6 +17,18 @@ exports.getShopDetails = (req, res) => {
   });
 };
 
+exports.removeFromCartById = (req, res) => {
+  const { productId } = req.params;
+
+  console.log(productId);
+
+  Cart.findByIdAndRemove(productId)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+
+  res.redirect('/cart-details');
+};
+
 exports.addToCartMenClotheById = (req, res) => {
   const { productId } = req.params;
 
@@ -24,7 +36,7 @@ exports.addToCartMenClotheById = (req, res) => {
     .findById(productId)
     .then(data => {
       const cart = new Cart({
-        Product_id: data._id,
+        ProductId: data._id,
         img: data.img,
         imgAlt: data.imgAlt,
         clothesName: data.clothesName,
@@ -43,7 +55,7 @@ exports.addToCartwomenClotheById = (req, res) => {
     .findById(productId)
     .then(data => {
       const cart = new Cart({
-        Product_id: data._id,
+        ProductId: data._id,
         img: data.img,
         imgAlt: data.imgAlt,
         clothesName: data.clothesName,
@@ -62,7 +74,7 @@ exports.addToCartBabyClotheById = (req, res) => {
     .findById(productId)
     .then(data => {
       const cart = new Cart({
-        Product_id: data._id,
+        ProductId: data._id,
         img: data.img,
         imgAlt: data.imgAlt,
         clothesName: data.clothesName,

@@ -7,19 +7,20 @@
             <p class="font-bold text-6xl">Cart is empty</p>
         </div>
         <% } else { %> 
-        <div class="flex gap-[30rem] border-b">
-            <div class="text-gray-600 text-xl">Product</div>
-            <div class="text-gray-600 text-xl">Price</div>
-            <div class="text-gray-600 text-xl">Quantity</div>
-            <div class="text-gray-600 text-xl">Total</div>
+        <div class="flex gap-[22rem] border-b">
+            <p class="text-gray-600 text-xl">Product</p>
+            <p class="text-gray-600 text-xl">Price</p>
+            <p class="text-gray-600 text-xl">Quantity</p>
+            <p class="text-gray-600 text-xl">Total</p>
         </div>
         <div class="h-[26rem] overflow-scroll">
             <% productDetails.forEach(productDetails => { %>
-            <div class="grid grid-cols-4 gap-[25rem] mt-10">
-                <div class="text-xl"><%= productDetails.clothesName%></div>
-                <div class="text-xl"><%= productDetails.price %></div>
-                <div class="text-xl">1</div>
-                <div class="text-xl">₹<%= productDetails.price %></div>
+            <div class="grid grid-cols-5 gap-60 mt-10">
+                <p class="text-xl"><%= productDetails.clothesName%></p>
+                <p class="text-xl"><%= productDetails.price %></p>
+                <p class="text-xl">1</p>
+                <p class="text-xl">₹<%= productDetails.price %></p>
+                <a href=" /remove-from-cart/<%= productDetails._id %>" class="text-xl text-red-700 font-bold">detele</a>
             </div>
             <%}) %>
         </div>

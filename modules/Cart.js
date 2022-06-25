@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const CartSchema = new Schema({
-  Product_id: {
+  ProductId: {
     type: Schema.Types.ObjectId,
     require: true,
   },
