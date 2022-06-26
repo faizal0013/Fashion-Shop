@@ -25,3 +25,7 @@
 .message-box {
     @apply flex items-center flex-col w-[50rem] p-8 transition-all duration-1000 ease-in-out text-center;
 }
+
+.errMess {
+    @apply text-red-600 text-lg;
+}

@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+
+<section class="my-20 text-center">
+    <div class="p-16 w-[75rem] mx-auto drop-shadow-lg shadow-2xl shadow-indigo-500/50">
+        <div class="font-extralight mb-4">
+            <p class="text-4xl">Login</p>
+        </div>
+        <div class="my-8 text-left">
+            <form action="#" method="post" class="flex flex-col gap-y-8" id="login">
+                <label for="user-name" class="font-serif text-xl">UserName</label>
+                <input type="text" name="user-name" id="user-name" class="border border-black p-4" placeholder="username or email">
+                <label for="user-password" class="font-serif text-xl">Password</label>
+                <input type="password" name="user-password" id="user-password" class="border border-black p-4" placeholder="password">
+                <a href="#" class="text-red-700">Forgot Password?</a>
+                <div class="flex items-center justify-between">
+                    <p>
+                        Don't have an account?
+                        <a href="/signup" class="text-red-700 mx-2">Sign Up</a>
+                        here
+                    </p>
+                    <button type="submit" class="px-8 py-4 text-lg font-serif bg-red-400 text-white hover:bg-red-500">login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<%- include('../includes/footer.ejs') %>
+
+<script src="js/login.js"></script>
+
+<%- include('../includes/end.ejs') %>

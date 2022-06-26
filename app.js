@@ -7,6 +7,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const routes = require('./routes/routes');
+const userAccountRoutes = require('./routes/user-account-routers');
 const cartRoutes = require('./routes/cart-routes');
 const { get404Error } = require('./controllers/404');
 
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(routes);
+app.use(userAccountRoutes);
 app.use(cartRoutes);
 app.use(get404Error);
 
