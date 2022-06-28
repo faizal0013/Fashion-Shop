@@ -27,8 +27,6 @@ login.addEventListener('submit', e => {
 
   if (!password.value) {
     showError(password, 'password is empty');
-  } else if (password.value.length < 7) {
-    showError(password, 'password is not valid');
   }
 
   if (document.querySelectorAll('.errMess').length > 0) e.preventDefault();
