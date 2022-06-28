@@ -13,27 +13,7 @@ exports.getSignupPage = (req, res) => {
     pageTitle: 'signup',
   });
 };
-/*
- if (!data) {
-        bcript.hash(userPassword, 12).then(pass => {
-          const user = new User({
-            name: name,
-            email: email,
-            'user-name': userName,
-            'user-password': pass,
-            admin,
-          });
 
-          user
-            .save()
-            .then(data => {
-              return res.redirect('/login');
-            })
-            .catch(err => console.log(err));
-        });
-      }
-      res.redirect('/home');
-*/
 exports.postSignupData = (req, res) => {
   const { name, email, 'user-name': userName, 'user-password': userPassword, admin } = req.body;
 
