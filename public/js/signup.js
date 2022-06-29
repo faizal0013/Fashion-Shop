@@ -46,11 +46,13 @@ signup.addEventListener('submit', e => {
   } else if (userName.value.length < 5) {
     showError(userName, 'username is not valid');
   }
+
   if (!userPassword.value) {
     showError(userPassword, 'password is empty');
   } else if (userPassword.value.length < 3) {
     showError(userPassword, 'password is not valid');
   }
+
   if (!conformPassword.value) {
     showError(conformPassword, 'password is empty');
   } else if (userPassword.value !== conformPassword.value) {
