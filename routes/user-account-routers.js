@@ -1,13 +1,13 @@
 const { Router } = require('express');
 const { body } = require('express-validator');
 
-const routers = Router();
+const router = Router();
 
 const userAccountControllers = require('../controllers/user-account-controllers');
 
-routers.get('/login', userAccountControllers.getLoginPage);
+router.get('/login', userAccountControllers.getLoginPage);
 
-routers.post(
+router.post(
   '/login',
   [
     body('user-name').isLength({ min: 5 }).withMessage('Invalid user name'),
@@ -16,9 +16,9 @@ routers.post(
   userAccountControllers.postLoginData
 );
 
-routers.get('/signup', userAccountControllers.getSignupPage);
+router.get('/signup', userAccountControllers.getSignupPage);
 
-routers.post(
+router.post(
   '/signup',
   [
     body('name').isLength({ min: 5 }).withMessage('Invalid name'),
@@ -34,4 +34,6 @@ routers.post(
   userAccountControllers.postSignupData
 );
 
-module.exports = routers;
+router.get('/logout', userAccountControllers.getLogout);
+
+module.exports = router;

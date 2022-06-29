@@ -21,6 +21,9 @@ const User = new Schema({
     type: Schema.Types.String,
     require: true,
   },
+  carts: {
+    type: Schema.Types.Array,
+  },
 });
 
 module.exports = model('User', User);

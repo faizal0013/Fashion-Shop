@@ -6,6 +6,40 @@ const User = require('../modules/User');
 exports.getLoginPage = (req, res) => {
   res.render('user/login', {
     pageTitle: 'login',
+    loggin: req.session.isLoggin,
+  });
+};
+
+exports.postLoginData = (req, res) => {
+  const { 'user-name': userName, 'user-password': userPassword } = req.body;
+
+  const error = validationResult(req);
+
+  if (!error.isEmpty()) {
+    // console.log(error.array());
+    return res.status(422).redirect('/login');
+  }
+
+  User.findOne({ 'user-name': userName })
+    .then(user => {
+      if (!user) return res.redirect('/login');
+      req.session.user = user;
+      return bcript.compare(userPassword, user['user-password']);
+    })
+    .then(password => {
+      if (password) {
+        req.session.isLoggin = true;
+        return res.redirect('/');
+      }
+      res.redirect('/login');
+    })
+    .catch(err => console.log('err', err));
+};
+
+exports.getSignupPage = (req, res) => {
+  res.render('user/signup', {
+    pageTitle: 'signup',
+    loggin: req.session.isLoggin,
   });
 };
 
@@ -40,33 +74,8 @@ exports.postSignupData = (req, res) => {
     .catch(err => {});
 };
 
-exports.getSignupPage = (req, res) => {
-  res.render('user/signup', {
-    pageTitle: 'signup',
+exports.getLogout = (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
   });
-};
-
-exports.postLoginData = (req, res) => {
-  const { 'user-name': userName, 'user-password': userPassword } = req.body;
-
-  const error = validationResult(req);
-
-  if (!error.isEmpty()) {
-    // console.log(error.array());
-    return res.status(422).redirect('/login');
-  }
-
-  User.findOne({ 'user-name': userName })
-    .then(data => {
-      if (!data) return res.redirect('/login');
-
-      return bcript.compare(userPassword, data['user-password']);
-    })
-    .then(pass => {
-      if (pass) {
-        return res.redirect('/');
-      }
-      res.redirect('/login');
-    })
-    .catch(err => console.log('err', err));
 };

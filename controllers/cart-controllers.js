@@ -1,18 +1,18 @@
 const Cart = require('../modules/Cart');
 const product = require('../modules/Product');
+const User = require('../modules/User');
 
 exports.getShopDetails = (req, res) => {
   Cart.find().then(item => {
     let total = 0;
-
     item.forEach(items => {
       total += items.price;
     });
-
     res.render('cart-details', {
       pageTitle: 'Cart Details',
       productDetails: item,
       total,
+      loggin: req.session.isLoggin,
     });
   });
 };
@@ -20,7 +20,7 @@ exports.getShopDetails = (req, res) => {
 exports.removeFromCartById = (req, res) => {
   const { productId } = req.params;
 
-  console.log(productId);
+  console.log(productIxd);
 
   Cart.findByIdAndRemove(productId)
     .then(data => console.log(data))
@@ -31,18 +31,23 @@ exports.removeFromCartById = (req, res) => {
 
 exports.addToCartMenClotheById = (req, res) => {
   const { productId } = req.params;
-
   product
     .findById(productId)
-    .then(data => {
+    .then(productData => {
       const cart = new Cart({
-        ProductId: data._id,
-        img: data.img,
-        imgAlt: data.imgAlt,
-        clothesName: data.clothesName,
-        price: data.price,
+        ProductId: productData._id,
+        img: productData.img,
+        imgAlt: productData.imgAlt,
+        clothesName: productData.clothesName,
+        price: productData.price,
       });
+      User.findById(req.session.user._id).then(data => {
+        data.carts.push(cart._id);
+        data.save();
+      });
+
       cart.save();
+
       res.redirect('/men-clothes');
     })
     .catch(err => console.log('addToCartMenClotheById', err));
@@ -60,6 +65,10 @@ exports.addToCartwomenClotheById = (req, res) => {
         imgAlt: data.imgAlt,
         clothesName: data.clothesName,
         price: data.price,
+      });
+      User.findById(req.session.user._id).then(data => {
+        data.carts.push(cart._id);
+        data.save();
       });
       cart.save();
       res.redirect('/women-clothes');
@@ -79,6 +88,10 @@ exports.addToCartBabyClotheById = (req, res) => {
         imgAlt: data.imgAlt,
         clothesName: data.clothesName,
         price: data.price,
+      });
+      User.findById(req.session.user._id).then(data => {
+        data.carts.push(cart._id);
+        data.save();
       });
       cart.save();
       res.redirect('/baby-clothes');

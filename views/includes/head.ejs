@@ -46,9 +46,19 @@
           </form>
         </div>
         <div>
-          <a href="/login">
-            <img src="/icons/login.svg" alt="login" class="w-6 cursor-pointer">
-          </a>
+          <% if (!loggin) { %>
+            <form action="/login">
+              <button type="submit">
+                <img src="/icons/log-in.svg" alt="login" class="w-6 cursor-pointer">
+              </button>
+            </form>
+            <% } else { %>
+              <form action="/logout">
+                <button type="submit">
+                  <img src="/icons/log-out.svg" alt="user" class="w-6 cursor-pointer">
+                </button>
+              </form>
+            <% } %>
         </div>
         <div>
           <a href="/cart-details">

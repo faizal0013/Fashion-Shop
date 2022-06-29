@@ -16,6 +16,7 @@ exports.getHome = (req, res) => {
       'images/tranding_1.jpg',
     ],
     latestNews: ['images/latest-news-1.jpg', 'images/latest-news-2.jpg', 'images/latest-news-3.jpg'],
+    loggin: req.session.isLoggin,
   });
 };
 
@@ -31,6 +32,7 @@ exports.getShopDetails = (req, res) => {
   res.render('cart-details', {
     pageTitle: 'Cart Details',
     productDetails: cart,
+    loggin: req.session.isLoggin,
     totalPrice,
   });
 };
@@ -44,6 +46,7 @@ exports.getManClothes = async (req, res) => {
         item: data,
         url: 'men-clothes',
         addToCard: 'add-cart/men-clothe',
+        loggin: req.session.isLoggin,
       });
     })
     .catch(err => {
@@ -61,6 +64,7 @@ exports.getManClothesProductId = (req, res) => {
       url: 'men-clothes',
       addToCard: 'add-cart/men-clothe',
       backPage: '/men-clothes',
+      loggin: req.session.isLoggin,
     });
   });
 };
@@ -74,6 +78,7 @@ exports.getWometClothes = async (req, res) => {
         item: data,
         url: 'women-clothes',
         addToCard: 'add-cart/women-clothe',
+        loggin: req.session.isLoggin,
       });
     })
     .catch(err => {
@@ -90,6 +95,7 @@ exports.getWometClothesProductId = (req, res) => {
       item: data,
       addToCard: 'add-cart/women-clothe',
       backPage: '/women-clothes',
+      loggin: req.session.isLoggin,
     });
   });
 };
@@ -103,6 +109,7 @@ exports.getBabyClothes = async (req, res) => {
         item: data,
         url: 'baby-clothes',
         addToCard: 'add-cart/baby-clothe',
+        loggin: req.session.isLoggin,
       });
     })
     .catch(err => {
@@ -119,6 +126,7 @@ exports.getBabyClothesProductId = (req, res) => {
       item: data,
       addToCard: 'add-cart/baby-clothe',
       backPage: '/baby-clothes',
+      loggin: req.session.isLoggin,
     });
   });
 };
@@ -126,5 +134,6 @@ exports.getBabyClothesProductId = (req, res) => {
 exports.getContactUs = (req, res) => {
   res.render('contact-us', {
     pageTitle: 'Contact us',
+    loggin: req.session.isLoggin,
   });
 };
