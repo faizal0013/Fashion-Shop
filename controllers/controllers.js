@@ -23,6 +23,7 @@ exports.getHome = (req, res) => {
 exports.getShopDetails = (req, res) => {
   const totalPrice = () => {
     let price = 0;
+
     cart.forEach(el => {
       price += el.price;
     });
