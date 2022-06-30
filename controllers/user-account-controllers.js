@@ -7,6 +7,7 @@ exports.getLoginPage = (req, res) => {
   res.render('user/login', {
     pageTitle: 'login',
     loggin: req.session.isLoggin,
+    admin: req.session.admin,
   });
 };
 
@@ -23,12 +24,17 @@ exports.postLoginData = (req, res) => {
   User.findOne({ 'user-name': userName })
     .then(user => {
       if (!user) return res.redirect('/login');
+
       req.session.user = user;
+
+      if (user.admin) req.session.admin = true;
+
       return bcript.compare(userPassword, user['user-password']);
     })
     .then(password => {
       if (password) {
         req.session.isLoggin = true;
+
         return res.redirect('/');
       }
       res.redirect('/login');
@@ -40,6 +46,7 @@ exports.getSignupPage = (req, res) => {
   res.render('user/signup', {
     pageTitle: 'signup',
     loggin: req.session.isLoggin,
+    admin: req.session.admin,
   });
 };
 

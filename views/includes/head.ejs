@@ -24,6 +24,11 @@
           <li>
             <a href="/home" class="hover:text-amber-700">Home</a>
           </li>
+          <% if (admin) { %>
+          <li>
+            <a href="/admin" class="text-red-500 hover:text-red-700">Admin</a>
+          </li>
+          <% } %>
           <li>
             <a href="/men-clothes" class="hover:text-amber-700">Men</a>
           </li>

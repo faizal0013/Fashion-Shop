@@ -10,9 +10,11 @@ const session = require('express-session');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+// routes
 const routes = require('./routes/routes');
 const userAccountRoutes = require('./routes/user-account-routers');
 const cartRoutes = require('./routes/cart-routes');
+const authRoutes = require('./routes/auth-routes');
 const { get404Error } = require('./controllers/404');
 
 const MONGODBCONNECCTION = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.nhstys8.mongodb.net/Feashon-Shop`;
@@ -39,6 +41,7 @@ app.use(
 );
 
 app.use(routes);
+app.use(authRoutes);
 app.use(userAccountRoutes);
 app.use(cartRoutes);
 app.use(get404Error);

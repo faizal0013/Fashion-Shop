@@ -17,6 +17,7 @@ exports.getHome = (req, res) => {
     ],
     latestNews: ['images/latest-news-1.jpg', 'images/latest-news-2.jpg', 'images/latest-news-3.jpg'],
     loggin: req.session.isLoggin,
+    admin: req.session.admin,
   });
 };
 
@@ -40,7 +41,7 @@ exports.getShopDetails = (req, res) => {
 
 exports.getManClothes = async (req, res) => {
   await products
-    .find({ tag: 'men-clothe' })
+    .find({ tag: 'men-clothes' })
     .then(data => {
       res.render('view-clothes', {
         pageTitle: 'Men Clothes',
@@ -72,7 +73,7 @@ exports.getManClothesProductId = (req, res) => {
 
 exports.getWometClothes = async (req, res) => {
   await products
-    .find({ tag: 'women-clothe' })
+    .find({ tag: 'women-clothes' })
     .then(data => {
       res.render('view-clothes', {
         pageTitle: 'Women Clothes',
@@ -97,13 +98,14 @@ exports.getWometClothesProductId = (req, res) => {
       addToCard: 'add-cart/women-clothe',
       backPage: '/women-clothes',
       loggin: req.session.isLoggin,
+      admin: req.session.admin,
     });
   });
 };
 
 exports.getBabyClothes = async (req, res) => {
   await products
-    .find({ tag: 'baby-clothe' })
+    .find({ tag: 'baby-clothes' })
     .then(data => {
       res.render('view-clothes', {
         pageTitle: 'Baby Clothes',
@@ -111,6 +113,7 @@ exports.getBabyClothes = async (req, res) => {
         url: 'baby-clothes',
         addToCard: 'add-cart/baby-clothe',
         loggin: req.session.isLoggin,
+        admin: req.session.admin,
       });
     })
     .catch(err => {
@@ -128,6 +131,7 @@ exports.getBabyClothesProductId = (req, res) => {
       addToCard: 'add-cart/baby-clothe',
       backPage: '/baby-clothes',
       loggin: req.session.isLoggin,
+      admin: req.session.admin,
     });
   });
 };
@@ -136,5 +140,6 @@ exports.getContactUs = (req, res) => {
   res.render('contact-us', {
     pageTitle: 'Contact us',
     loggin: req.session.isLoggin,
+    admin: req.session.admin,
   });
 };

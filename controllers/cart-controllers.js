@@ -18,6 +18,7 @@ exports.getShopDetails = (req, res) => {
         productDetails: item,
         total,
         loggin: req.session.isLoggin,
+        admin: req.session.admin,
       });
     })
     .catch(err => console.log(err));

@@ -1,0 +1,43 @@
+<%- include('../includes/head.ejs') %>
+
+<section class="my-20 text-center">
+    <div class="p-16 w-[75rem] mx-auto drop-shadow-lg shadow-2xl shadow-indigo-500/50">
+        <div class="font-thin mb-4">
+            <p class="text-4xl text-red-600">Admin</p>
+        </div>
+        <div class="my-8 text-left text-lg">
+            <form action="/admin" method="post" class="flex flex-col gap-y-8" id="admin">
+                <label for="clothesName" class="font-serif text-xl">Clothe Name</label>
+                <input type="text" name="clothesName" id="clothesName" class="border border-black p-4">
+                <label for="tag" class="font-serif text-xl" id="tag-err">Tag:</label>
+                <div>
+                    <input type="radio" name="tag" class="border border-black p-4" value="men-clothes">
+                    <label for="tag">Men Clothes</label>
+                </div>
+                <div>
+                    <input type="radio" name="tag" class="border border-black p-4" value="women-clothes">
+                    <label for="tag">Women Clothes</label>
+                </div>
+                <div>
+                    <input type="radio" name="tag" class="border border-black p-4" value="baby-clothes">
+                    <label for="tag">Baby Clothes</label>
+                </div>
+                <label for="img" class="font-serif text-xl">Image:</label>
+                <input type="file" name="img" id="img" class="file:rounded-full file:py-4 file:px-8 file:border-0 
+                                                            file:bg-violet-50 file:text-violet-700 
+                                                            hover:file:bg-violet-100 file:mr-5">
+                <label for="price" class="font-serif text-xl">Price</label>
+                <input type="number" name="price" id="price" class="border border-black p-4">
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="px-8 py-4 text-lg font-serif bg-red-400 text-white hover:bg-red-500">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<%- include('../includes/footer.ejs') %>
+
+<script src="/js/admin.js"></script>
+
+<%- include('../includes/end.ejs') %>
