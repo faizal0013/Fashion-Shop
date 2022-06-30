@@ -49,6 +49,7 @@ exports.getManClothes = async (req, res) => {
         url: 'men-clothes',
         addToCard: 'add-cart/men-clothe',
         loggin: req.session.isLoggin,
+        admin: req.session.admin,
       });
     })
     .catch(err => {
@@ -67,6 +68,7 @@ exports.getManClothesProductId = (req, res) => {
       addToCard: 'add-cart/men-clothe',
       backPage: '/men-clothes',
       loggin: req.session.isLoggin,
+      admin: req.session.admin,
     });
   });
 };
@@ -81,6 +83,7 @@ exports.getWometClothes = async (req, res) => {
         url: 'women-clothes',
         addToCard: 'add-cart/women-clothe',
         loggin: req.session.isLoggin,
+        admin: req.session.admin,
       });
     })
     .catch(err => {

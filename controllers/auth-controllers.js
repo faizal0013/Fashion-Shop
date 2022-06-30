@@ -11,16 +11,12 @@ exports.getAdminPage = (req, res) => {
 exports.postAdminData = (req, res) => {
   const { clothesName, tag, img, price } = req.body;
 
-  if (!error.isEmpty()) {
-    return res.status(422).redirect('/admin/admin-page');
-  }
-
-  const imgPath = `/images/${tag}/${img}`;
+  const imgPath = `/images/${img}`;
 
   const product = new Product({
     tag,
     img: imgPath,
-    imgAlt: 'clothe',
+    imgAlt: 'clothes',
     clothesName,
     price,
   });
