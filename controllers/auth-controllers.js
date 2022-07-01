@@ -9,9 +9,9 @@ exports.getAdminPage = (req, res) => {
 };
 
 exports.postAdminData = (req, res) => {
-  const { clothesName, tag, img, price } = req.body;
+  const { clothesName, tag, price } = req.body;
 
-  const imgPath = `/images/${img}`;
+  const imgPath = `/images/${req.file.filename}`;
 
   const product = new Product({
     tag,
@@ -21,8 +21,7 @@ exports.postAdminData = (req, res) => {
     price,
   });
 
-  console.log(product);
-  // product.save();
+  product.save();
 
   res.redirect('/');
 };

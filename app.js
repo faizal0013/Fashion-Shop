@@ -10,6 +10,8 @@ const session = require('express-session');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+const multer = require('multer');
+
 // routes
 const routes = require('./routes/routes');
 const userAccountRoutes = require('./routes/user-account-routers');
@@ -30,6 +32,21 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
+
+const fileStorage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, './public/images');
+  },
+  filename(req, file, cb) {
+    cb(null, `${new Date().toISOString()}-${file.originalname}`);
+  },
+});
+
+app.use(
+  multer({
+    storage: fileStorage,
+  }).single('img')
+);
 
 app.use(
   session({

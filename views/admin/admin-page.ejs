@@ -6,7 +6,7 @@
             <p class="text-4xl text-red-600">Admin</p>
         </div>
         <div class="my-8 text-left text-lg">
-            <form action="/admin" method="post" class="flex flex-col gap-y-8" id="admin">
+            <form action="/admin" method="post" class="flex flex-col gap-y-8" id="admin" enctype="multipart/form-data">
                 <label for="clothesName" class="font-serif text-xl">Clothe Name</label>
                 <input type="text" name="clothesName" id="clothesName" class="border border-black p-4">
                 <label for="tag" class="font-serif text-xl" id="tag-err">Tag:</label>
