@@ -40,103 +40,119 @@ exports.getShopDetails = (req, res) => {
 };
 
 exports.getManClothes = async (req, res) => {
-  await products
-    .find({ tag: 'men-clothes' })
-    .then(data => {
-      res.render('view-clothes', {
-        pageTitle: 'Men Clothes',
-        item: data,
-        url: 'men-clothes',
-        addToCard: 'add-cart/men-clothe',
-        loggin: req.session.isLoggin,
-        admin: req.session.admin,
-      });
-    })
-    .catch(err => {
-      console.log(err);
+  try {
+    const records = await products.find({ tag: 'men-clothes' });
+    const addedToCartMessage = req.flash('added-to-cart');
+
+    res.render('view-clothes', {
+      pageTitle: 'Men Clothes',
+      item: records,
+      url: 'men-clothes',
+      addToCard: 'add-cart/men-clothe',
+      loggin: req.session.isLoggin,
+      admin: req.session.admin,
+      addedToCartMessage,
     });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // dynamic router controlls
-exports.getManClothesProductId = (req, res) => {
+exports.getManClothesProductId = async (req, res) => {
   const productId = req.params.productId;
-  products.findById(productId).then(data => {
+
+  try {
+    const record = await products.findById(productId);
+
     res.render('view-clothe', {
-      pageTitle: data.clothesName,
-      item: data,
+      pageTitle: record.clothesName,
+      item: record,
       url: 'men-clothes',
       addToCard: 'add-cart/men-clothe',
       backPage: '/men-clothes',
       loggin: req.session.isLoggin,
       admin: req.session.admin,
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exports.getWometClothes = async (req, res) => {
-  await products
-    .find({ tag: 'women-clothes' })
-    .then(data => {
-      res.render('view-clothes', {
-        pageTitle: 'Women Clothes',
-        item: data,
-        url: 'women-clothes',
-        addToCard: 'add-cart/women-clothe',
-        loggin: req.session.isLoggin,
-        admin: req.session.admin,
-      });
-    })
-    .catch(err => {
-      console.log(err);
+  try {
+    const records = await products.find({ tag: 'women-clothes' });
+    const addedToCartMessage = req.flash('added-to-cart');
+
+    res.render('view-clothes', {
+      pageTitle: 'Women Clothes',
+      item: records,
+      url: 'women-clothes',
+      addToCard: 'add-cart/women-clothe',
+      loggin: req.session.isLoggin,
+      admin: req.session.admin,
+      addedToCartMessage,
     });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // dynamic router controlls
-exports.getWometClothesProductId = (req, res) => {
+exports.getWometClothesProductId = async (req, res) => {
   const productId = req.params.productId;
-  products.findById(productId).then(data => {
+
+  try {
+    const record = await products.findById(productId);
+
     res.render('view-clothe', {
-      pageTitle: data.clothesName,
-      item: data,
+      pageTitle: record.clothesName,
+      item: record,
       addToCard: 'add-cart/women-clothe',
       backPage: '/women-clothes',
       loggin: req.session.isLoggin,
       admin: req.session.admin,
     });
-  });
+  } catch (error) {}
 };
 
 exports.getBabyClothes = async (req, res) => {
-  await products
-    .find({ tag: 'baby-clothes' })
-    .then(data => {
-      res.render('view-clothes', {
-        pageTitle: 'Baby Clothes',
-        item: data,
-        url: 'baby-clothes',
-        addToCard: 'add-cart/baby-clothe',
-        loggin: req.session.isLoggin,
-        admin: req.session.admin,
-      });
-    })
-    .catch(err => {
-      console.log(err);
+  try {
+    const records = await products.find({ tag: 'baby-clothes' });
+    const addedToCartMessage = req.flash('added-to-cart');
+
+    res.render('view-clothes', {
+      pageTitle: 'Baby Clothes',
+      item: records,
+      url: 'baby-clothes',
+      addToCard: 'add-cart/baby-clothe',
+      loggin: req.session.isLoggin,
+      admin: req.session.admin,
+      addedToCartMessage,
     });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // dynamic router controlls
-exports.getBabyClothesProductId = (req, res) => {
+exports.getBabyClothesProductId = async (req, res) => {
   const productId = req.params.productId;
-  products.findById(productId).then(data => {
+
+  try {
+    const record = await products.findById(productId);
+
     res.render('view-clothe', {
-      pageTitle: data.clothesName,
-      item: data,
+      pageTitle: record.clothesName,
+      item: record,
       addToCard: 'add-cart/baby-clothe',
       backPage: '/baby-clothes',
       loggin: req.session.isLoggin,
       admin: req.session.admin,
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exports.getContactUs = (req, res) => {

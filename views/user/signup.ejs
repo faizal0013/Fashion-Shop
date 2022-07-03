@@ -1,5 +1,20 @@
 <%- include('../includes/head.ejs') %>
 
+
+<% if (signupErr.length > 0) { %>
+<section class="container mx-auto text-center mt-5 px-5 py-4 border-2 border-red-600">
+    <h1 class="text-red-600 font-bold text-2xl m-2"><%= signupErr[0] %>s</h1>
+</section>
+<% } %>
+
+    
+<% if (signupSuccess.length > 0) { %>
+<section class="container mx-auto text-center mt-5 px-5 py-4 border-2 border-green-600">
+    <h1 class="text-green-600 font-bold text-2xl m-2"><%= signupSuccess[0] %>s</h1>
+</section>
+<% } %>
+    
+
 <section class="my-20 text-center">
     <div class="p-16 w-[75rem] mx-auto drop-shadow-lg shadow-2xl shadow-indigo-500/50">
         <div class="font-extralight mb-4">

@@ -1,6 +1,12 @@
 <%- include('includes/head.ejs') %>
 
-<div class="container flex justify-between mx-auto my-4 px-2 py-8">
+<% if (addedToCartMessage.length > 0) { %>
+<section class="container mx-auto text-center mt-5 px-5 py-4 border-2 border-green-600">
+  <h1 class="text-green-600 font-bold text-2xl m-2"><%= addedToCartMessage[0] %>s</h1>
+</section>
+<% } %>
+
+<section class="container flex justify-between mx-auto my-4 px-2 py-8">
   <div class="flex justify-center items-center flex-col border-2 px-10 pt-4">
     <div class="border rounded-full text-center my-4 mx-2">
       <select class="bg-transparent py-2 px-20 appearance-none cursor-pointer">
@@ -97,7 +103,7 @@
     </div>
     <%}); %>
   </div>
-</div>
+</section>
 
 <%- include('includes/footer.ejs') %>
 

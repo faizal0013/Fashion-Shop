@@ -2,112 +2,129 @@ const Cart = require('../modules/Cart');
 const product = require('../modules/Product');
 const User = require('../modules/User');
 
-exports.getShopDetails = (req, res) => {
-  User.findById(req.session.user)
-    .then(user => {
-      return Cart.find({ productId: user.carts });
-    })
-    .then(item => {
-      let total = 0;
-      item.forEach(items => {
-        total += items.price;
-      });
+exports.getShopDetails = async (req, res) => {
+  try {
+    const userRecord = await User.findById(req.session.user);
 
-      res.render('cart-details', {
-        pageTitle: 'Cart Details',
-        productDetails: item,
-        total,
-        loggin: req.session.isLoggin,
-        admin: req.session.admin,
-      });
-    })
-    .catch(err => console.log(err));
+    const cardRecords = await Cart.find({ productId: userRecord.carts });
+
+    let total = 0;
+
+    cardRecords.forEach(items => {
+      total += items.price;
+    });
+
+    res.render('cart-details', {
+      pageTitle: 'Cart Details',
+      productDetails: cardRecords,
+      total,
+      loggin: req.session.isLoggin,
+      admin: req.session.admin,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-exports.removeFromCartById = (req, res) => {
+exports.removeFromCartById = async (req, res) => {
   const { productId } = req.params;
 
-  User.findById(req.session.user).then(user => {
-    Cart.findByIdAndRemove(productId)
-      .then(item => {
-        user.carts.pop(item._id);
-        user.save();
-      })
-      .catch(err => console.log(err));
-  });
+  try {
+    const userRecord = await User.findById(req.session.user);
+    const cartRecord = await Cart.findByIdAndRemove(productId);
 
-  res.redirect('/cart-details');
+    userRecord.carts.pop(cartRecord._id);
+    userRecord.save();
+
+    res.redirect('/cart-details');
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-exports.addToCartMenClotheById = (req, res) => {
+exports.addToCartMenClotheById = async (req, res) => {
   const { productId } = req.params;
-  product
-    .findById(productId)
-    .then(productData => {
-      const cart = new Cart({
-        ProductId: productData._id,
-        img: productData.img,
-        imgAlt: productData.imgAlt,
-        clothesName: productData.clothesName,
-        price: productData.price,
-      });
 
-      User.findById(req.session.user._id).then(data => {
-        data.carts.push(cart._id);
-        data.save();
-      });
+  try {
+    const productRecord = await product.findById(productId);
 
-      cart.save();
+    const cart = new Cart({
+      ProductId: productRecord._id,
+      img: productRecord.img,
+      imgAlt: productRecord.imgAlt,
+      clothesName: productRecord.clothesName,
+      price: productRecord.price,
+    });
 
-      res.redirect('/men-clothes');
-    })
-    .catch(err => console.log('addToCartMenClotheById', err));
+    const userRecord = await User.findById(req.session.user._id);
+
+    userRecord.carts.push(cart._id);
+    userRecord.save();
+
+    req.flash('added-to-cart', `${cart.clothesName} is added to card`);
+
+    cart.save();
+
+    res.redirect('/men-clothes');
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-exports.addToCartwomenClotheById = (req, res) => {
+exports.addToCartwomenClotheById = async (req, res) => {
   const { productId } = req.params;
 
-  product
-    .findById(productId)
-    .then(data => {
-      const cart = new Cart({
-        ProductId: data._id,
-        img: data.img,
-        imgAlt: data.imgAlt,
-        clothesName: data.clothesName,
-        price: data.price,
-      });
+  try {
+    const productRecord = await product.findById(productId);
 
-      User.findById(req.session.user._id).then(data => {
-        data.carts.push(cart._id);
-        data.save();
-      });
-      cart.save();
-      res.redirect('/women-clothes');
-    })
-    .catch(err => console.log('addToCartwomenClotheById', err));
+    const cart = new Cart({
+      ProductId: productRecord._id,
+      img: productRecord.img,
+      imgAlt: productRecord.imgAlt,
+      clothesName: productRecord.clothesName,
+      price: productRecord.price,
+    });
+
+    const userRecord = await User.findById(req.session.user._id);
+
+    userRecord.carts.push(cart._id);
+    userRecord.save();
+
+    req.flash('added-to-cart', `${cart.clothesName} is added to card`);
+
+    cart.save();
+
+    res.redirect('/women-clothes');
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-exports.addToCartBabyClotheById = (req, res) => {
+exports.addToCartBabyClotheById = async (req, res) => {
   const { productId } = req.params;
 
-  product
-    .findById(productId)
-    .then(data => {
-      const cart = new Cart({
-        ProductId: data._id,
-        img: data.img,
-        imgAlt: data.imgAlt,
-        clothesName: data.clothesName,
-        price: data.price,
-      });
+  try {
+    const productRecord = await product.findById(productId);
 
-      User.findById(req.session.user._id).then(data => {
-        data.carts.push(cart._id);
-        data.save();
-      });
-      cart.save();
-      res.redirect('/baby-clothes');
-    })
-    .catch(err => console.log('addToCartBabyClotheById', err));
+    const cart = new Cart({
+      ProductId: productRecord._id,
+      img: productRecord.img,
+      imgAlt: productRecord.imgAlt,
+      clothesName: productRecord.clothesName,
+      price: productRecord.price,
+    });
+
+    const userRecord = await User.findById(req.session.user._id);
+
+    userRecord.carts.push(cart._id);
+    userRecord.save();
+
+    req.flash('added-to-cart', `${cart.clothesName} is added to card`);
+
+    cart.save();
+
+    res.redirect('/baby-clothes');
+  } catch (error) {
+    console.log(error);
+  }
 };

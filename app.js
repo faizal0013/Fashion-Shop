@@ -6,6 +6,8 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 
+const flash = require('connect-flash');
+
 const session = require('express-session');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
@@ -56,6 +58,8 @@ app.use(
     store: store,
   })
 );
+
+app.use(flash());
 
 app.use(routes);
 app.use(authRoutes);

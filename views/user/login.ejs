@@ -5,6 +5,11 @@
         <div class="font-extralight mb-4">
             <p class="text-4xl">Login</p>
         </div>
+        <% if(loginErrMessage.length > 0) {%>
+        <div class="p-5 bg-red-500">
+            <h1 class="text-white text-lg font-bold"><%= loginErrMessage[0] %></h1>
+        </div>
+        <% } %>
         <div class="my-8 text-left">
             <form action="/login" method="post" class="flex flex-col gap-y-8" id="login">
                 <label for="user-name" class="font-serif text-xl">UserName</label>
