@@ -55,8 +55,8 @@ npm run tailwind
 ## Description
 
 Hello My Name is Faizal. I am from **India** 🇮🇳. \
-so i create my first backend Project using **express js**. \
-i also user _ejs_ template engine to create easy dynamics web side. \
+so i create my first backend Project using **express js framework**. \
+i also user **ejs template engine** to create easy dynamics web side. \
 **express-session** package is user to create session on server. \
 **express-validator** package is user to check validation on server. \
 **bcryptjs** is user to store hash password in database. \
