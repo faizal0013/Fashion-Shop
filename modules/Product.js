@@ -17,6 +17,9 @@ const ProductSchema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
+  adminName: {
+    type: Schema.Types.String,
+  },
   price: {
     type: Schema.Types.Number,
     required: true,

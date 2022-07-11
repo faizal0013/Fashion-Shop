@@ -4,9 +4,9 @@ const User = require('../modules/User');
 
 exports.getShopDetails = async (req, res) => {
   try {
-    const userRecord = await User.findById(req.session.user);
+    const userRecord = await User.findById(req.session.user._id);
 
-    const cardRecords = await Cart.find({ productId: userRecord.carts });
+    const cardRecords = await Cart.find({ productId: userRecord.carts._id });
 
     let total = 0;
 
@@ -30,7 +30,7 @@ exports.removeFromCartById = async (req, res) => {
   const { productId } = req.params;
 
   try {
-    const userRecord = await User.findById(req.session.user);
+    const userRecord = await User.findById(req.session.user._id);
     const cartRecord = await Cart.findByIdAndRemove(productId);
 
     userRecord.carts.pop(cartRecord._id);

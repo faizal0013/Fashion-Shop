@@ -38,6 +38,7 @@ exports.postLoginData = async (req, res) => {
 
     req.session.isLoggin = true;
     req.session.user = record;
+
     if (record.admin) req.session.admin = true;
 
     res.redirect('/');

@@ -43,6 +43,7 @@ exports.getManClothes = async (req, res) => {
   try {
     const records = await products.find({ tag: 'men-clothes' });
     const addedToCartMessage = req.flash('added-to-cart');
+    const adminName = req.session.user ? req.session.user['user-name'] : '';
 
     res.render('view-clothes', {
       pageTitle: 'Men Clothes',
@@ -51,6 +52,7 @@ exports.getManClothes = async (req, res) => {
       addToCard: 'add-cart/men-clothe',
       loggin: req.session.isLoggin,
       admin: req.session.admin,
+      adminName,
       addedToCartMessage,
     });
   } catch (error) {
@@ -83,6 +85,7 @@ exports.getWometClothes = async (req, res) => {
   try {
     const records = await products.find({ tag: 'women-clothes' });
     const addedToCartMessage = req.flash('added-to-cart');
+    const adminName = req.session.user ? req.session.user['user-name'] : '';
 
     res.render('view-clothes', {
       pageTitle: 'Women Clothes',
@@ -91,6 +94,7 @@ exports.getWometClothes = async (req, res) => {
       addToCard: 'add-cart/women-clothe',
       loggin: req.session.isLoggin,
       admin: req.session.admin,
+      adminName,
       addedToCartMessage,
     });
   } catch (error) {
@@ -120,6 +124,7 @@ exports.getBabyClothes = async (req, res) => {
   try {
     const records = await products.find({ tag: 'baby-clothes' });
     const addedToCartMessage = req.flash('added-to-cart');
+    const adminName = req.session.user ? req.session.user['user-name'] : '';
 
     res.render('view-clothes', {
       pageTitle: 'Baby Clothes',
@@ -128,6 +133,7 @@ exports.getBabyClothes = async (req, res) => {
       addToCard: 'add-cart/baby-clothe',
       loggin: req.session.isLoggin,
       admin: req.session.admin,
+      adminName,
       addedToCartMessage,
     });
   } catch (error) {

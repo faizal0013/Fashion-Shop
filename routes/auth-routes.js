@@ -9,4 +9,10 @@ router.get('/admin', authControllers.getAdminPage);
 
 router.post('/admin', authControllers.postAdminData);
 
+router.get('/admin/update/:productId', authControllers.getAdminUpdatePage);
+
+router.post('/admin/update/:productId', authControllers.postAdminUpdateData);
+
+router.get('/admin/remove/:productId', authControllers.getAdminRemoveData);
+
 module.exports = router;

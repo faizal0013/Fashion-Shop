@@ -6,80 +6,8 @@
 </section>
 <% } %>
 
-<section class="container flex justify-between mx-auto my-4 px-2 py-8">
-  <div class="flex justify-center items-center flex-col border-2 px-10 pt-4">
-    <div class="border rounded-full text-center my-4 mx-2">
-      <select class="bg-transparent py-2 px-20 appearance-none cursor-pointer">
-        <option>Category</option>
-        <option>Category 1</option>
-        <option>Category 2</option>
-        <option>Category 3</option>
-        <option>Category 4</option>
-      </select>
-    </div>
-    <div class="border rounded-full text-center my-4 mx-2">
-      <select class="bg-transparent py-2 px-20 appearance-none cursor-pointer">
-        <option>Type</option>
-        <option>Type 1</option>
-        <option>Type 2</option>
-        <option>Type 3</option>
-        <option>Type 4</option>
-      </select>
-    </div>
-    <div class="border rounded-full text-center my-4 mx-2">
-      <select class="bg-transparent py-2 px-20 appearance-none cursor-pointer">
-        <option>Size</option>
-        <option>Size 1</option>
-        <option>Size 2</option>
-        <option>Size 3</option>
-        <option>Size 4</option>
-      </select>
-    </div>
-    <div class="border rounded-full text-center my-4 mx-2">
-      <select class="bg-transparent py-2 px-20 appearance-none cursor-pointer">
-        <option>Color</option>
-        <option>Color 1</option>
-        <option>Color 2</option>
-        <option>Color 3</option>
-        <option>Color 4</option>
-      </select>
-    </div>
-    <div class="my-4">
-      <span class="font-bold text-xl">Filter by Genres</span>
-      <form class="flex flex-col m-5">
-        <div class="my-2 font-bold text-lg">
-          <input type="radio" id="genres1" class="p-4" />
-          <label for="genres1" class="ml-4">Genres 1</label>
-        </div>
-        <div class="my-2 font-bold text-lg">
-          <input type="radio" id="genres2" class="p-4" />
-          <label for="genres2" class="ml-4">Genres 2</label>
-        </div>
-        <div class="my-2 font-bold text-lg">
-          <input type="radio" id="genres3" class="p-4" />
-          <label for="genres3" class="ml-4">Genres 3</label>
-        </div>
-      </form>
-    </div>
-    <div class="my-4">
-      <span class="font-bold text-xl">Filter by Brand</span>
-      <form class="flex flex-col m-5">
-        <div class="my-2 font-bold text-lg">
-          <input type="radio" id="brand1" class="p-4" />
-          <label for="brand1" class="ml-4">Brand 1</label>
-        </div>
-        <div class="my-2 font-bold text-lg">
-          <input type="radio" id="brand2" class="p-4" />
-          <label for="brand2" class="ml-4">Brand 2</label>
-        </div>
-        <div class="my-2 font-bold text-lg">
-          <input type="radio" id="brand3" class="p-4" />
-          <label for="brand3" class="ml-4">Brand 3</label>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="grid gap-y-5 gap-x-4 grid-cols-3 w-[70rem] p-6 border-2 overflow-scroll h-[73rem]">
+<section class="container flex justify-center mx-auto my-4 px-2 py-8">
+  <div class="grid gap-y-5 gap-x-4 grid-cols-3 w-[100rem] p-6 border-2 overflow-scroll h-[73rem] overflow-x-hidden">
     <% item.forEach(item=>{ %>
     <div class="border text-center">
       <div class="p-2">
@@ -97,8 +25,12 @@
         <a
           href="/<%= url %>/<%= item._id %>"
           class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-gray-300"
-          >view</a
-        >
+          >view</a>
+        <% if(adminName === item.adminName) { %>
+          <% item.adminName %>
+          <a href="/admin/update/<%= item._id %>?update=true" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-yellow-300">Edit</a>
+          <a href="/admin/remove/<%= item._id %>?remove=true" class="inline-block m-4 p-2 border-2 rounded-xl font-bold hover:bg-red-600">Remove</a>
+        <% } %>
       </div>
     </div>
     <%}); %>

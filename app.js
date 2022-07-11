@@ -14,19 +14,21 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 
 const multer = require('multer');
 
-// routes
+// routes require
 const routes = require('./routes/routes');
 const userAccountRoutes = require('./routes/user-account-routers');
 const cartRoutes = require('./routes/cart-routes');
 const authRoutes = require('./routes/auth-routes');
 const { get404Error } = require('./controllers/404');
 
-const MONGODBCONNECCTION = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.nhstys8.mongodb.net/Feashon-Shop`;
+// mongodb connection
+const MONGODBCONNECTION = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.nhstys8.mongodb.net/Feashon-Shop`;
 
 const app = express();
 
+// storeing  session on mongodb
 const store = new MongoDBStore({
-  uri: MONGODBCONNECCTION,
+  uri: MONGODBCONNECTION,
   collection: 'sessions',
 });
 
@@ -68,7 +70,7 @@ app.use(cartRoutes);
 app.use(get404Error);
 
 mongoose
-  .connect(MONGODBCONNECCTION)
+  .connect(MONGODBCONNECTION)
   .then(() => {
     app.listen(8000, () => {
       console.log('http://localhost:8000/');
