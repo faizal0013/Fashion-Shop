@@ -6,7 +6,7 @@ exports.getShopDetails = async (req, res) => {
   try {
     const userRecord = await User.findById(req.session.user._id);
 
-    const cardRecords = await Cart.find({ productId: userRecord.carts._id });
+    const cardRecords = await Cart.find({ _id: userRecord.carts });
 
     let total = 0;
 
