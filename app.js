@@ -22,7 +22,7 @@ const authRoutes = require('./routes/auth-routes');
 const { get404Error } = require('./controllers/404');
 
 // mongodb connection
-const MONGODBCONNECTION = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.nhstys8.mongodb.net/Feashon-Shop`;
+const MONGODBCONNECTION = process.env.MONGO_URL;
 
 const app = express();
 
